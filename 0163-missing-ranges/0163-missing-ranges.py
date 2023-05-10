@@ -10,13 +10,10 @@ class Solution:
             new.append([lower, nums[0]-1])
 
         for leng in range(0, len(nums)-1):
-            if nums[leng+1] - nums[leng] <= 1:
-                continue
-            else:
+            if nums[leng+1] - nums[leng] > 1:
                 new.append([nums[leng]+1, nums[leng+1]-1])
-
-
-        if nums[-1] < upper:
-            new.append([(nums[-1])+1, upper])
+         
+        new.append([(nums[-1])+1, upper]) if nums[-1] < upper else None
+            
 
         return new
