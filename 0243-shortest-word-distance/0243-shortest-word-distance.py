@@ -3,8 +3,7 @@ class Solution:
         word1_idx, word2_idx = [], []
         
         for idx, word in enumerate(wordsDict):
-            if word == word1:
-                word1_idx.append(idx)
-            if word == word2:
-                word2_idx.append(idx)
+            word1_idx.append(idx) if word == word1 else None
+            word2_idx.append(idx) if word == word2 else None
+
         return min(abs(a-b) for a in word1_idx for b in word2_idx)
