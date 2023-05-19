@@ -7,9 +7,9 @@ class Solution:
             for i, j in zip(sentence1, sentence2):
                 #print([i, j], [j, i])
                 if i == j:
-                    pass
+                    continue
                 elif [i, j] in similarPairs or [j, i] in similarPairs :
-                    pass
+                    continue
                 else:
                     return False
         return True
