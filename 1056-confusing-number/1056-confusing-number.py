@@ -1,9 +1,8 @@
 class Solution:
     def confusingNumber(self, n: int) -> bool:
-        lst = [2, 3, 4, 5, 7]
         new = []
         for num in str(n):
-            if int(num) in lst:
+            if num in '23457':
                 return False
             else:
                 if num == '9': num = '6' 
