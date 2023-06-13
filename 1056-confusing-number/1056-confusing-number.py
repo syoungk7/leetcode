@@ -9,7 +9,7 @@ class Solution:
                 if num == '9': num = '6' 
                 elif num == '6': num = '9' 
                 new.append(num)
-        print(new, ''.join(new[::-1]))
+
         if int(n) != int(''.join(new[::-1])):
             return True
         else:
