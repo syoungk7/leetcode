@@ -10,7 +10,7 @@ class Solution:
 
         totals.sort(key=lambda a: a[2])
 
-        for w, b, dist in totals:
+        for w, b, _ in totals:
             if answer[w] == -1 and b not in used:
                 answer[w] = b
                 used.append(b)
