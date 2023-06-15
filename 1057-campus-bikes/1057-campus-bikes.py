@@ -8,12 +8,14 @@ class Solution:
                 dist = abs(bike[0] - worker[0]) + abs(bike[1] - worker[1])
                 #totals.append((w, b, dist))
                 totals.append((dist, w, b))
+
         #totals.sort(key=lambda a: a[2])
         totals.sort()
+
         #for w, b, _ in totals:
         for _, w, b in totals:
             if answer[w] == -1 and b not in used:
                 answer[w] = b
                 used.append(b)
-    
+
         return answer
