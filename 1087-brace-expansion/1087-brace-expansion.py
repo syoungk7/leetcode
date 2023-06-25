@@ -3,38 +3,31 @@ class Solution:
 
         def summmmm(aaa: str, lsttt: list):
             new = []
-            if len(lsttt) == 0:
-                if len(aaa) == 1:
-                    new.append(aaa)
-                    return new
-                else:
-                    for i in sorted(aaa.split(',')):
-                        new.append(i)
+            if len(lsttt) == 0 and len(aaa) == 1: 
+                new.append(aaa)
+                return new
+            elif len(lsttt) == 0 and len(aaa) != 1: 
+                for i in sorted(aaa.split(',')): new.append(i)
+
+            elif len(lsttt) != 0 and len(aaa) == 1:
+                for j in lsttt: new.append(aaa + j)
             else:
-                if len(aaa) == 1:
-                    for j in lsttt:
-                        new.append(aaa + j)
-                else:
-                    for k in sorted(aaa.split(',')):
-                        for j in lsttt:
-                            new.append(k + j)
+                for k in sorted(aaa.split(',')):
+                    for j in lsttt: new.append(k + j)
             return new
 
-        lst = []
+        lst, lsttt = [], []
         for i in s.split("}"):
-            if i.isalpha():
+            if i.isalpha(): 
                 lst.append(i)
             else:
-                a = i.split('{')
-                for j in a:
-                    lst.append(j)
+                for j in i.split('{'): lst.append(j)
         
-        lsttt = []
-        if len(lst) == 1:
+        if len(lst) == 1: 
             return lst
         else:
-            lst2 = lst[::-1]
-            for i in lst2:
-                if i != "":
+            for i in lst[::-1]:
+                if i != "": 
                     lsttt = summmmm(i, lsttt)
+
         return lsttt
