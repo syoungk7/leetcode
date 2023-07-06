@@ -6,8 +6,5 @@ class Solution:
         summa = 0
         for i in str(n):
             summa += int(i)**len(str(n))
-
-        if n == summa:
-            return True
-        else:
-            return False
+        
+        return n == summa
