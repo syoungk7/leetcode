@@ -7,11 +7,11 @@ class Solution:
         # nums1 = nums1 if m == 0 else nums1
         # nums1 = nums2 if n == 0 else nums1
 
-        # nums1[m::] = nums2
-        # nums1 = nums1.sort()
+        nums1[m::] = nums2
+        nums1 = nums1.sort()
         
-        nums1[:] = nums1[0:m] + nums2
-        nums1.sort()       
+        # nums1[:] = nums1[0:m] + nums2
+        # nums1.sort()       
 
  
         
