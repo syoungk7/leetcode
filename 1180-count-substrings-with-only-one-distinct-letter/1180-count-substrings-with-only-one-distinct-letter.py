@@ -17,12 +17,10 @@ class Solution:
         for i in lst:
             if len(i) == 1:
                 summ += 1
-                print('if', summ)
             else:
                 count = 1
                 while count < len(i):
                     summ += count
                     count += 1
                 summ += count
-                print('wh', summ)
         return summ
