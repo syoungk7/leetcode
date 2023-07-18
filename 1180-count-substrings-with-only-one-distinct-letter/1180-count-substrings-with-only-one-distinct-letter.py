@@ -9,14 +9,3 @@ class Solution:
                 count = 1
             summ += count
         return summ
-    
-
-#         count = 1
-#         res = 1
-#         for i in range(1, len(s)):
-#             if s[i] == s[i-1]:
-#                 count +=1
-#             else:
-#                 count = 1
-#             res += count
-#         return res
