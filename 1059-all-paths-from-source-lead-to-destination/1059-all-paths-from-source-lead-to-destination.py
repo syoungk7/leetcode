@@ -9,15 +9,15 @@ class Solution:
         
         def find_path(s):
             if lst[s]:
-                return lst[s] == 'P'
+                return lst[s] == 'Pass'
             if not path[s]:
                 return s == destination
              
-            lst[s] = 'T'
+            lst[s] = 'Test'
             for d in path[s]:
                 if not find_path(d):
                     return False
-            lst[s] = 'P'
+            lst[s] = 'Pass'
             return True
 
         return find_path(source)
