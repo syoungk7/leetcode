@@ -8,7 +8,7 @@ class Solution:
         summ = 0
         for idx, w in enumerate(weight):
             summ += w
-            print(idx, w)
+
             if summ > 5000:
                 return idx
         
