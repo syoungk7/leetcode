@@ -3,10 +3,16 @@ class Solution:
         diff = int((arr[-1] - arr[0]) / len(arr))
         if diff == 0: return arr[0]
         
-        lst = list(range(arr[0], arr[-1]+diff, diff))
-        a = list(set(lst) - set(arr))
-        return a[0]
+        for i in range(len(arr)):
+            if arr[i] + diff != arr[i+1]:
+                return arr[i] + diff        
+
+#         diff = int((arr[-1] - arr[0]) / len(arr))
+#         if diff == 0: return arr[0]
         
+#         lst = list(range(arr[0], arr[-1]+diff, diff))
+#         a = list(set(lst) - set(arr))
+#         return a[0]
         
 #         m, pre = len(arr), 0
 #         arr = sorted(arr)
