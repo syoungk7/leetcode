@@ -6,25 +6,25 @@
 #         self.right = right
 class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
-        self.ans=False
-        root1_lst = {}
+        
+        self.ans = False # from other's solutions
+        root1_dic = {} # dic is faster than list
 
         # from solution
-        def dfs(node, node_list):
+        def dfs(node):
             if not node: return
-            node_list[node.val] = 1
-            dfs(node.left, node_list)
-            dfs(node.right, node_list)
+            root1_dic[node.val] = 1
+            dfs(node.left)
+            dfs(node.right)
+
             
         def dfs_2(node):
             if not node: return
-            print(target - node.val)
-            if target - node.val in root1_lst:
-                self.ans=True
+            if target - node.val in root1_dic: self.ans=True
             dfs_2(node.left)
             dfs_2(node.right)
 
-        dfs(root1, root1_lst)
+        dfs(root1)
         dfs_2(root2)
         
-        return self.ans 
+        return self.ans
