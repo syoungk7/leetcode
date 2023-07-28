@@ -8,7 +8,7 @@ class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
         
         self.ans = False # from other's solutions
-        root1_dic = {} # dic is faster than list
+        root1_dic = {} # dic is faster than list no need to call the list in def
 
         # from solution
         def dfs(node):
@@ -20,7 +20,10 @@ class Solution:
             
         def dfs_2(node):
             if not node: return
-            if target - node.val in root1_dic: self.ans=True
+            if target - node.val in root1_dic: 
+                self.ans=True
+                
+                return
             dfs_2(node.left)
             dfs_2(node.right)
 
