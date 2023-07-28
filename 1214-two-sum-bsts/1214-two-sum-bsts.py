@@ -7,12 +7,12 @@
 class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
         self.ans=False
-        root1_lst = []
+        root1_lst = {}
 
         # from solution
         def dfs(node, node_list):
             if not node: return
-            node_list.append(node.val)
+            node_list[node.val] = 1
             dfs(node.left, node_list)
             dfs(node.right, node_list)
             
