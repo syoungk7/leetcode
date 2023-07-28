@@ -23,7 +23,7 @@ class Solution:
             if target - node.val in root1_dic: 
                 self.ans=True
                 
-                return
+                return ## if true, return
             dfs_2(node.left)
             dfs_2(node.right)
 
