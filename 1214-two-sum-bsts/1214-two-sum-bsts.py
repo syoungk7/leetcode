@@ -18,6 +18,10 @@ class Solution:
         dfs(root1, root1_lst)
         dfs(root2, root2_lst)
         
-        a = [True for i in root1_lst for j in root2_lst if i+j == target]
-        return a
-        
+        for i in root1_lst:
+            subt = target-i
+            
+            if subt in root2_lst: 
+                return True
+            
+        return False
