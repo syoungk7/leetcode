@@ -13,9 +13,8 @@ class Solution:
                     print(diam, ll, level1, level2)
                     if ll > level2:
                         level2 = ll
-                    
-                        if level2 > level1:
-                            level2, level1 = level1, level2
+                    if level2 > level1:
+                        level2, level1 = level1, level2
 
             dd = max(diam, level1+level2)
             ll = max(level1+1, level2+1)
