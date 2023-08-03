@@ -1,13 +1,5 @@
 class Solution:
     def treeDiameter(self, edges: List[List[int]]) -> int:
-
-        # edges to dict 
-        # consider both case right to left and left to right
-        tree = collections.defaultdict(list)
-        for left, right in edges:
-            tree[left].append(right)
-            tree[right].append(left)        
-        #print(tree, tree[0])
         
         # target: the longest path
         def diameter(node, node2):
@@ -24,10 +16,20 @@ class Solution:
                     
                         if level2 > level1:
                             level2, level1 = level1, level2
-            print(diam, level1, level2)
-            return max(diam, level1+level2), max(level1+1, level2+1)
 
+            dd = max(diam, level1+level2)
+            ll = max(level1+1, level2+1)
+            return dd, ll
         
+        # edges to dict 
+        # consider both case right to left and left to right
+        tree = collections.defaultdict(list)
+        for left, right in edges:
+            tree[left].append(right)
+            tree[right].append(left)        
+        #print(tree, tree[0])
         
+
+
         return diameter(0, None)[0]
             
