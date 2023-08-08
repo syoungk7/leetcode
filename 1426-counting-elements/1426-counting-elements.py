@@ -6,6 +6,6 @@ class Solution:
 # #             return 0
         print(len(arr))
         for i in range(0, len(arr)):
-            if arr[i]+1 in arr:
+            if arr[i]+1 in set(arr):
                 count += 1
         return count
