@@ -7,7 +7,7 @@ class Solution:
             if i in '23457': return False
             if i == '9' or i == '6': new += new_map[i]
             else: new += i
-            print(new)
+
 
         if int(n) != int(new[::-1]): return True
         
