@@ -5,11 +5,11 @@ class Solution:
         new = []
         
         for i in sorted(arr):
-            if i == prev:
+            if i == prev: 
                 count += 1
-                if count == 3:
-                    new.append(i)
+                if count == 3: new.append(i)
             if i > prev:
                 prev = i
                 count = 1
+
         return new
