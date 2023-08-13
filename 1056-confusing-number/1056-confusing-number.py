@@ -1,13 +1,11 @@
 class Solution:
     def confusingNumber(self, n: int) -> bool:
-        new_map = {'6': '9', '9': '6'}
+        new_map = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}
         new = ""
         
         for i in str(n):
             if i in '23457': return False
-            if i in '96': new += new_map[i]
-            else: new += i
-
+            new += new_map[i]
 
         if int(n) != int(new[::-1]): return True
         
