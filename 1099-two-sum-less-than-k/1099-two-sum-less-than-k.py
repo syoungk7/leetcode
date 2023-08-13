@@ -5,9 +5,7 @@ class Solution:
 
         for i in range(len(nums)):
             for j in range(len(nums)):
-                if i == j: continue
-                
-                summ.append(nums[i] + nums[j])
+                if i != j: summ.append(nums[i] + nums[j])
 
         if min(summ) > k: return -1
 
