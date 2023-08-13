@@ -8,8 +8,7 @@ class Solution:
             for j in range(len(new)):
                 if i != j and new[i]+new[j] < k: 
                     maxx = max(maxx, new[i]+new[j])
-
-        if maxx > k: return -1
+        if maxx == 0: return -1
 
         return maxx
         
