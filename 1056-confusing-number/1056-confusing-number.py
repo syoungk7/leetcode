@@ -1,15 +1,15 @@
 class Solution:
     def confusingNumber(self, n: int) -> bool:
         new_map = {0: 0, 1: 1, 6: 9, 8: 8, 9: 6}
-        new = []
+        new = ""
         
         for i in str(n):
             i = int(i)
             if i not in new_map: return False
             print(new_map[i])
-            new.append(str(new_map[i]))
-
-        if n != int(''.join(new[::-1])): return True
+            new += str(new_map[i])
+        print(n, new)
+        if int(n) != int(new[::-1]): return True
         
         return False
             
