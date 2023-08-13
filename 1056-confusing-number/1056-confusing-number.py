@@ -8,7 +8,7 @@ class Solution:
             if i not in new_map: return False
             print(new_map[i])
             new += str(new_map[i])
-        print(n, new)
+
         if int(n) != int(new[::-1]): return True
         
         return False
