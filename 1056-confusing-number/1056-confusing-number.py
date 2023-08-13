@@ -4,7 +4,7 @@ class Solution:
         new = ""
         
         for i in str(n):
-            if int(i) not in new_map: return False
+            if i in '23457': return False
             new += str(new_map[int(i)])
 
         if int(n) != int(new[::-1]): return True
