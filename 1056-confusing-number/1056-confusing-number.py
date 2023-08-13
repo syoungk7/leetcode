@@ -5,7 +5,7 @@ class Solution:
         
         for i in str(n):
             if i in '23457': return False
-            if i == '9' or i == '6': new += new_map[i]
+            if i in '96': new += new_map[i]
             else: new += i
 
 
