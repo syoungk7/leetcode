@@ -5,7 +5,6 @@ class Solution:
         if new[0]+new[1] > k: return -1
         
         left, right, maxx = 0, len(new)-1, 0
-        
         while left < right:
             summ = new[left] + new[right]
             if summ < k:
@@ -14,8 +13,7 @@ class Solution:
             if summ >= k:
                 right -= 1
                        
-        if maxx == 0: return -1
-        else: return maxx
+        return maxx
         
 #         import itertools
 #         lst = []
