@@ -39,11 +39,4 @@ class Solution:
                 if summ == -1: start = middle+1
                 if summ == 1: end = middle
 
-            
-            # if end - start == 1:
-            #     summ = reader.compareSub(start, start, end, end)
-            #     if summ == 1: return start
-            #     elif summ == -1: return end
-            #     else: return middle
-            print(start, middle, end)
         return end
