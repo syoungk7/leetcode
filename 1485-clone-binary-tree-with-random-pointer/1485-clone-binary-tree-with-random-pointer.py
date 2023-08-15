@@ -8,7 +8,6 @@
 
 class Solution:
     def copyRandomBinaryTree(self, root: 'Optional[Node]') -> 'Optional[NodeCopy]':
-        cp = {}
 
         def dfs(o_node, cp):
             if not o_node: return None
@@ -22,6 +21,7 @@ class Solution:
             new.random = dfs(o_node.random, cp)
             return new
         
+        cp = {}
         return dfs(root, cp)
     
 ## ref solution
