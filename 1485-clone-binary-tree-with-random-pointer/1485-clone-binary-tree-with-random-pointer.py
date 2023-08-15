@@ -15,7 +15,7 @@ class Solution:
             if o_node in cp: return cp[o_node]
             else:
                 new = NodeCopy(o_node.val)
-            cp[o_node] = new
+                cp[o_node] = new
 
             new.left = dfs(o_node.left, cp)
             new.right = dfs(o_node.right, cp)
