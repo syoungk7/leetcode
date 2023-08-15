@@ -8,4 +8,21 @@ class Node:
 
 class Solution:
     def cloneTree(self, root: 'Node') -> 'Node':
-        return deepcopy(root)
+        if not root: return None
+        new = Node()
+
+        def dfs(root, new):
+            if not root: return None
+
+            new.val = root.val
+
+            for child in root.children:
+                cp = Node()
+                new.children.append(cp)
+                dfs(child, cp)
+            
+        dfs(root, new)
+        return new
+
+# ??
+#        return deepcopy(root)
