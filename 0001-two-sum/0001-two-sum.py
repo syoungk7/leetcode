@@ -13,11 +13,11 @@ class Solution:
             pair[nums[idx]] = idx
 
 # using less memory
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[j] == target - nums[i]:
-                    return [i, j]
-        return []
+#         for i in range(len(nums)):
+#             for j in range(i+1, len(nums)):
+#                 if nums[j] == target - nums[i]:
+#                     return [i, j]
+#         return []
 
 # solution using loop
 #         for num in nums:
