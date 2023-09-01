@@ -29,5 +29,4 @@ class Solution:
 #             elif target < 0 and num >= target:
 #                 for idx, num2 in enumerate(nums):
 #                     if num + num2 == target and nums.index(num) != idx:
-#                         return [nums.index(num), idx]                
-            
+#                         return [nums.index(num), idx]         
