@@ -1,8 +1,6 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
         out = [0]
-        
-        
         if n == 0: return out
         
         for i in range(1, n+1):
