@@ -22,12 +22,14 @@ class Solution:
 
         for i in range(len(tmp_i)-1):
             for ii in range(i+1, len(tmp_i)):
-                if -(tmp_i[i] + tmp_i[ii]) in set_k:
-                    out.add(tuple(sorted((tmp_i[i], tmp_i[ii], -(tmp_i[i] + tmp_i[ii])))))
+                inv = -(tmp_i[i] + tmp_i[ii])
+                if inv in set_k:
+                    out.add(tuple(sorted((tmp_i[i], tmp_i[ii], inv))))
         
         for k in range(len(tmp_k)-1):
             for kk in range(k+1, len(tmp_k)):
-                if -(tmp_k[k] + tmp_k[kk]) in set_i:
-                    out.add(tuple(sorted((-(tmp_k[k] + tmp_k[kk]), tmp_k[k], tmp_k[kk]))))
+                inv = -(tmp_k[k] + tmp_k[kk])
+                if inv in set_i:
+                    out.add(tuple(sorted((inv, tmp_k[k], tmp_k[kk]))))
         
         return list(out)
