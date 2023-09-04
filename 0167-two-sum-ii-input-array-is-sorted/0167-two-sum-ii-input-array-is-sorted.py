@@ -13,9 +13,10 @@ class Solution:
 #             if target - numbers[i] in pair:
 #                 return [pair[target - numbers[i]], i+1]
             
-            
         dic = {}
+        
         for idx, val in enumerate(numbers):
-            if target-val in dic:
-                return [dic[target-val], idx+1]
-            dic[val] = idx+1
+            
+            if target-val in dic: return [dic[target-val], idx + 1]
+            
+            dic[val] = idx + 1
