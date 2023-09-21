@@ -1,4 +1,4 @@
--- Write your MySQL query statement below
+/* Write your PL/SQL query statement below */
 
 Select employee_id, (Case When Mod(employee_id, 2) <> 0 And name Not Like 'M%' 
                      Then salary
