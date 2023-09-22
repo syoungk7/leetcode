@@ -1,9 +1,10 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        pascal = [[1] * (i+1) for i in range(numRows)]
-        #print(pascal)
+        # output lst
+        output = [[1] * (i+1) for i in range(numRows)]
+        #print(output)
         for i in range(numRows):
-            for j in range(1,i):
-                pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
-                #print(pascal)
-        return pascal
+            for j in range(1, i):
+                output[i][j] = output[i-1][j-1] + output[i-1][j]
+                #print(output)
+        return output
