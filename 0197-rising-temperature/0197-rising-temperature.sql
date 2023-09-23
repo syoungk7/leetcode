@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+/* Write your PL/SQL query statement below */
 With tmp_weather (id, recordDate, temperature, prev_day, prev_tem)
 As (Select id, recordDate, temperature,
     Lag(recordDate) over (Order by recordDate) prev_day,
@@ -7,4 +7,5 @@ As (Select id, recordDate, temperature,
     )
 Select id
 From tmp_weather
-Where temperature - prev_tem > 0 and TIMESTAMPDIFF(Day, prev_day, recordDate) = 1
+Where temperature - prev_tem > 0 and 
+    trunc(recordDate) - trunc(prev_day) = 1
