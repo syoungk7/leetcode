@@ -1,8 +1,10 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         #return x ** n
+        if n == 0: return 1.0
+        if n == 1: return x
 
-        new_n = n if n > 0 else -n
+        new_n = abs(n)
         new_x = x if n > 0 else 1/x
         mul_x = 1
 
