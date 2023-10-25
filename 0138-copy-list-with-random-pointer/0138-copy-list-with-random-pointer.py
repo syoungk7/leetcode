@@ -9,10 +9,9 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-       
         if head == None: return None
-        
         out = {}
+
         def new_head(node):
             if node == None: return None
             if node in out: return out[node]
@@ -20,7 +19,6 @@ class Solution:
             out[node] = Node(node.val)
             out[node].next = new_head(node.next)
             out[node].random = new_head(node.random)
-
             return out[node]
 
         return new_head(head)
