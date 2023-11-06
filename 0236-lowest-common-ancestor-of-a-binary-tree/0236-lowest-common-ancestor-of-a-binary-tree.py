@@ -19,5 +19,5 @@ class Solution:
         if left and right:
             return root
         else:
-            print(left, right)
+
             return left or right
