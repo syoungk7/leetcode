@@ -25,17 +25,17 @@ class Solution:
 
 
         parent = {root: None}
-        queue = deque([root])
+        que = [root]
 
         while not (p in parent and q in parent):
-            node = queue.popleft()
+            node = que.pop()
             if node.left:
                 parent[node.left] = node
-                queue.append(node.left)
+                que.append(node.left)
             if node.right:
                 parent[node.right] = node
-                queue.append(node.right)
-
+                que.append(node.right)
+            
         ancestors = {p}
         while parent[p]:
             ancestors.add(parent[p])
