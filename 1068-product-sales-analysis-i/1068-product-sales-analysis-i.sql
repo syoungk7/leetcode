@@ -1,4 +1,9 @@
-/* Write your PL/SQL query statement below */
-Select Product.product_name, Sales.year, Sales.price
-From Sales
-Inner Join Product On Sales.product_id = Product.product_id
+# Write your MySQL query statement below
+# select p.product_name, s.year, s.price
+# from Sales as s, Product as p
+# where s.product_id = p.product_id
+
+select p.product_name, s.year, s.price
+from Sales as s
+right join Product p on s.product_id = p.product_id
+where s.price is not Null
