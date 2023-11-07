@@ -13,8 +13,8 @@ class SparseVector:
         """
         output = 0
         if len(self.sv) == len(vec.sv):
-            for i, j in zip(self.sv, vec.sv):
-                output += i*j
+            for i in range(len(vec.sv)):
+                output += self.sv[i] * vec.sv[i]
         else:
             return None
         return output
