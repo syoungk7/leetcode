@@ -22,16 +22,12 @@
 
 
 
-# Select s.user_id, case when c.action is NULL then 0.00 else Round((sum(c.action = 'confirmed')/count(c.action)),2 )end as confirmation_rate
-# From Signups s
-# left join
-# Confirmations c
-# on s.user_id = c.user_id
-# group by s.user_id;
-
-
-
-Select s.user_id, ifnull(round(sum(case when c.action='confirmed' then 1 else 0 end)/count(c.user_id), 2), 0) as confirmation_rate
+Select s.user_id, ifnull(round((sum(c.action = 'confirmed')/count(c.action)), 2), 0) as confirmation_rate
 From Signups s
 left join Confirmations c on s.user_id = c.user_id
 group by s.user_id;
+
+# Select s.user_id, ifnull(round(sum(case when c.action='confirmed' then 1 else 0 end)/count(c.user_id), 2), 0) as confirmation_rate
+# From Signups s
+# left join Confirmations c on s.user_id = c.user_id
+# group by s.user_id;
