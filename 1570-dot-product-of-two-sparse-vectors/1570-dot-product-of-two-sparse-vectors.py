@@ -14,11 +14,22 @@ class SparseVector:
         :rtype: int
         """
         output = 0
+        shared_key = set([key for key,_ in self.sv]).intersection(set([key for key,_ in vec.sv]))
+        self.idx, vec.idx = 0, 0
+        
+        while len(shared_key) != 0:
+            if self.sv[self.idx][0] in shared_key and vec.sv[vec.idx][0] in shared_key:
+                output += self.sv[self.idx][1] * vec.sv[vec.idx][1]
+                shared_key.remove(self.sv[self.idx][0])
+            elif self.sv[self.idx][0] not in shared_key:
+                self.idx += 1
+            elif vec.sv[vec.idx][0] not in shared_key:
+                vec.idx += 1
 
-        for idx, val in vec.sv:
-            for i, v in self.sv:
-                if idx == i:
-                    output += val * v
+        # for idx, val in min_sv:
+        #     if idx in []
+        #         if idx == i:
+        #             output += val * v
 
         # else: return None
   
