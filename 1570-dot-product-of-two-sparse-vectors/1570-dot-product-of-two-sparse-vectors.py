@@ -16,7 +16,8 @@ class SparseVector:
 
         # if len(self.sv) == len(vec.sv):
         for i in range(len(vec.sv)):
-            output += self.sv[i] * vec.sv[i]
+            if self.sv[i] != 0 and vec.sv[i] != 0:
+                output += self.sv[i] * vec.sv[i]
         # else: return None
   
         # if len(self.sv) > len(vec.sv):
@@ -33,10 +34,7 @@ class SparseVector:
 #         for key in shared_key:
 #             output += self.sv[key] * vec.sv[key]
         return output
-    
-    
-    
-    
+
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)
 # v2 = SparseVector(nums2)
