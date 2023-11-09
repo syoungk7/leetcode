@@ -14,10 +14,10 @@ class SparseVector:
         """
         output = 0
 
-        if len(self.sv) == len(vec.sv):
-            for i in range(len(vec.sv)):
-                output += self.sv[i] * vec.sv[i]
-        else: return None
+        # if len(self.sv) == len(vec.sv):
+        for i in range(len(vec.sv)):
+            output += self.sv[i] * vec.sv[i]
+        # else: return None
   
         # if len(self.sv) > len(vec.sv):
         #     for key in vec.sv.keys():
