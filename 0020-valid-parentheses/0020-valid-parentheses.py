@@ -6,15 +6,15 @@ class Solution:
         for cha in s:
             if cha in pairs.keys():
                 stack.append(pairs[cha])
-            elif cha in pairs.values():
-                if len(stack) == 0:
+            elif len(stack) == 0 or cha != stack.pop():
                     return False
-                else:
-                    opp = stack.pop()
-                    if opp != cha:
-                        return False
 
-        if len(stack) == 0: 
-            return True
-        else: 
-            return False
+        return len(stack) == 0
+        
+#         for cha in s:
+#             if cha in pairs:
+#                 stack.append(cha)
+#             elif len(stack) == 0 or cha != pairs[stack.pop()]:
+#                 return False
+
+#         return len(stack) == 0
