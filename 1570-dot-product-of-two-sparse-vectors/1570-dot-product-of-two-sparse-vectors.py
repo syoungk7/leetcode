@@ -1,47 +1,25 @@
 class SparseVector:
     def __init__(self, nums):
-        """
-        :type nums: List[int]
-        """
-        #self.sv = {idx:val for idx, val in enumerate(nums) if val != 0}
-        #self.sv = nums
-        self.sv = [(idx, val) for idx, val in enumerate(nums) if val != 0]
+        self.q = [(i, n) for i, n in enumerate(nums) if n != 0]
+
+
         
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec):
-        """
-        :type vec: 'SparseVector'
-        :rtype: int
-        """
-        output = 0
-
-        if len(self.sv) > len(vec.sv):
-            for idx, val in vec.sv:
-                for i, v in self.sv:
-                    if idx == i:
-                        output += val * v
-        else:
-            for idx, val in self.sv:
-                for i, v in vec.sv:
-                    if idx == i:
-                        output += val * v
-        # else: return None
-  
-        # if len(self.sv) > len(vec.sv):
-        #     for key in vec.sv.keys():
-        #         if key in self.sv:
-        #             output += self.sv[key] * vec.sv[key]
-        # else:
-        #      for key in self.sv.keys():
-        #         if key in vec.sv:
-        #             output += self.sv[key] * vec.sv[key]  
-
-#         shared_key = set(self.sv.keys()).intersection(set(vec.sv.keys()))
-
-#         for key in shared_key:
-#             output += self.sv[key] * vec.sv[key]
-        return output
-
+        res = 0
+        p1, p2 = 0, 0
+        while p1 < len(self.q) and p2 < len(vec.q):
+            i1, v1 = self.q[p1]
+            i2, v2 = vec.q[p2]
+            if i1 == i2:
+                res += v1 * v2
+                p1 += 1
+                p2 += 1
+            elif i1 > i2:
+                p2 += 1
+            else:
+                p1 += 1
+        return res
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)
 # v2 = SparseVector(nums2)
