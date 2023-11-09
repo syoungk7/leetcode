@@ -15,16 +15,11 @@ class SparseVector:
         """
         output = 0
 
-        if len(self.sv) > len(vec.sv):
-            for idx, val in vec.sv:
-                for i, v in self.sv:
-                    if idx == i:
-                        output += val * v
-        else:
-            for idx, val in self.sv:
-                for i, v in vec.sv:
-                    if idx == i:
-                        output += val * v
+        for idx, val in vec.sv:
+            for i, v in self.sv:
+                if idx == i:
+                    output += val * v
+
         # else: return None
   
         # if len(self.sv) > len(vec.sv):
