@@ -12,12 +12,12 @@ class Solution:
 #             count -= 1
 #         return ocean_view[::-1]
     
-        rightMax = -1
-        ans = []
-        l = len(heights)
-        for i in range(l-1,-1,-1):
-            h = heights[i]
-            if h > rightMax:
-                ans.append(i)
-                rightMax = h
-        return ans[::-1]
+        max_height_from_right = 0
+        res = deque()
+
+        for i in range(len(heights)-1,-1,-1):
+            if heights[i] > max_height_from_right:
+                res.appendleft(i)
+            max_height_from_right = max(max_height_from_right, heights[i])
+
+        return res
