@@ -4,8 +4,9 @@ class SparseVector:
         :type nums: List[int]
         """
         #self.sv = {idx:val for idx, val in enumerate(nums) if val != 0}
-        self.sv = nums
-
+        #self.sv = nums
+        self.sv = [(idx, val) for idx, val in enumerate(nums) if val != 0]
+        
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec):
         """
@@ -14,11 +15,17 @@ class SparseVector:
         """
         output = 0
 
-        if len(self.sv) == len(vec.sv):
-            for i in range(len(vec.sv)):
-                if self.sv[i] != 0 and vec.sv[i] != 0:
-                    output += self.sv[i] * vec.sv[i]
-        else: return None
+        if len(self.sv) > len(vec.sv):
+            for idx, val in vec.sv:
+                for i, v in self.sv:
+                    if idx == i:
+                        output += val * v
+        else:
+            for idx, val in self.sv:
+                for i, v in vec.sv:
+                    if idx == i:
+                        output += val * v
+        # else: return None
   
         # if len(self.sv) > len(vec.sv):
         #     for key in vec.sv.keys():
