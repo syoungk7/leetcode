@@ -24,7 +24,12 @@ class Solution:
 
         left, right = p, q
         while left != right:
-            left = left.parent if left.parent else q
-            right = right.parent if right.parent else p
+            if left.parent:
+                left = left.parent
+            else: left = q
             
-        return left or right
+            if right.parent:
+                right = right.parent 
+            else: right = p
+            
+        return left
