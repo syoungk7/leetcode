@@ -7,10 +7,11 @@ class Solution:
         
         for idx, val in enumerate(nums):
             summa += val
-            if summa % k in hash_map:
-                if hash_map[summa % k] < idx:
-                    return True
-            else:
+            if summa % k not in hash_map:
                 hash_map[summa % k] = idx + 1
+                
+            elif summa % k in hash_map and hash_map[summa % k] < idx:
+                    return True
+
     
         return False
