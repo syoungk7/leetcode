@@ -15,7 +15,7 @@ class Solution:
                 num2 = num2[:-1]           
             
             lst_Char.append(chr(add_Char % 10 + ord_0))
-            add_Char //= 10
+            add_Char = add_Char // 10
 
             if num1 == '' and num2 == '' and add_Char != 0:
                 lst_Char.append(chr(add_Char + ord_0))
