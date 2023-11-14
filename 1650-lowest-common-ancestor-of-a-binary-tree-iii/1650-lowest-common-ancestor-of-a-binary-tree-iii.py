@@ -10,26 +10,27 @@ class Node:
 
 class Solution:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
-#         tmp = set()
-        
-#         def recur_ances(node):
-#             if node is None or node in tmp:
-#                 return node
-#             else:
-#                 tmp.add(node)
-#                 node = node.parent
-#                 return recur_ances(node)
 
-#         return recur_ances(p) or recur_ances(q)
+        seen = set()
+        target = p
 
-        left, right = p, q
-        while left != right:
-            if left.parent:
-                left = left.parent
-            else: left = q
+        while target:
+            seen.add(target)
+            target = target.parent
+        target = q
+
+        while not target in seen:
+            target = target.parent
+        return target
+
+#         left, right = p, q
+#         while left != right:
+#             if left.parent:
+#                 left = left.parent
+#             else: left = q
             
-            if right.parent:
-                right = right.parent 
-            else: right = p
+#             if right.parent:
+#                 right = right.parent 
+#             else: right = p
             
-        return left
+#         return left
