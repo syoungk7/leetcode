@@ -15,9 +15,7 @@ class Solution:
                 self.out.append(root.val)
             
             for i in [root.right, root.left]:
-                if i:
-                    recur_right(i, level+1)
+                if i: recur_right(i, level+1)
 
-                
         recur_right(root, level)
         return self.out
