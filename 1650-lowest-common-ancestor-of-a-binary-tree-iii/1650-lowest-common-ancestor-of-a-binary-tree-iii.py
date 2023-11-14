@@ -32,4 +32,4 @@ class Solution:
                 right = right.parent 
             else: right = p
             
-        return left or right
+        return left
