@@ -10,7 +10,6 @@ class Solution:
             summa += val
             if summa % k in hash_map:
                 if hash_map[summa % k] < idx:
-                    print(hash_map, summa % k, idx)
                     return True
             else:
                 hash_map[summa % k] = idx + 1
