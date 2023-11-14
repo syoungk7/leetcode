@@ -1,7 +1,7 @@
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         ## Time: O(N), Space: O(K)
-        if len(nums) < 2: return False
+
 
         hash_map = {0: 0}
         summa = 0
