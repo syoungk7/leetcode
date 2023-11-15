@@ -36,5 +36,6 @@ class Solution:
                     r += 1
                 j += 1
             i = j
+            print(j, len(s), l, r)
             res += abs(l - r)
         return res
