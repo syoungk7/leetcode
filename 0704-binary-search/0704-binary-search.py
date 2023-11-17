@@ -23,9 +23,9 @@ class Solution:
             middle = int((start + end)/2)
 
             if nums[middle] < target:
-                start += 1
+                start = middle + 1
             elif nums[middle] > target:
-                end -= 1
+                end = middle - 1
             else:
                 return middle
 
