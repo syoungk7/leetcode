@@ -7,5 +7,5 @@ WHERE (id, email) NOT IN (SELECT *
                           FROM (SELECT MIN(id), email
                                 FROM Person
                                 GROUP BY email
-                                ORDER BY id) s
+                                ) s
                           )
