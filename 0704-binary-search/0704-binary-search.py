@@ -28,5 +28,4 @@ class Solution:
                 end = middle - 1
             else:
                 return middle
-
         return -1
