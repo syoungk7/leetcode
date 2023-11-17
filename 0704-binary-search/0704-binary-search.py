@@ -7,7 +7,7 @@ class Solution:
         # else: 
         #     return -1
         
-        ## TC: O(worst -> N), SC(1)
+        ## TC: O(logN?, worst -> N), SC(1)
         # if target in nums[0:int(len(nums)/2)]: 
         #     return nums.index(target)
         # elif target in nums[int(len(nums)/2)::]:
@@ -16,15 +16,16 @@ class Solution:
         #     return -1
         
         ## nums: sorted in ascending order
-        
-        right, left = 0, len(nums)-1 ## index
-        while right <= left:
-            middle = int((right + left)/2)
+        ## TC: O(logN), SC(1)
+        start, end = 0, len(nums) - 1 ## index
+
+        while start <= end:
+            middle = int((start + end)/2)
 
             if nums[middle] < target:
-                right += 1
+                start += 1
             elif nums[middle] > target:
-                left -= 1
+                end -= 1
             else:
                 return middle
 
