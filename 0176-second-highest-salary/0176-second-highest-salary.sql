@@ -12,8 +12,13 @@
 # FROM selected e
 # RIGHT JOIN (SELECT '2' as ranks) s ON s.ranks = e.ranks
 
-SELECT IFNULL((SELECT DISTINCT salary
-                FROM Employee
-                GROUP BY salary
-                ORDER BY salary DESC
-                LIMIT 1 OFFSET 1), NULL) AS SecondHighestSalary
+# SELECT IFNULL((SELECT DISTINCT salary  ## distinct!!
+#                 FROM Employee
+#                 GROUP BY salary
+#                 ORDER BY salary DESC
+#                 LIMIT 1 OFFSET 1), NULL) AS SecondHighestSalary
+
+
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employee
+WHERE Salary < (SELECT MAX(Salary) FROM Employee)
