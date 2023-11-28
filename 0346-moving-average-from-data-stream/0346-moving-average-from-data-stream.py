@@ -9,13 +9,13 @@ class MovingAverage:
 
         if len(self.int_lst) < self.size:
             return sum(self.int_lst) / len(self.int_lst)
-        # elif len(self.int_lst) == self.size:
-        #     return sum(self.int_lst) / self.size
-        # else:
-        #     self.int_lst.pop(0)
-        #     return sum(self.int_lst) / self.size
+        elif len(self.int_lst) == self.size:
+            return sum(self.int_lst) / self.size
         else:
-            return sum(self.int_lst[-self.size:]) / self.size
+            self.int_lst.pop(0)
+            return sum(self.int_lst) / self.size
+        # else:
+        #     return sum(self.int_lst[-self.size:]) / self.size
 
 
 # Your MovingAverage object will be instantiated and called as such:
