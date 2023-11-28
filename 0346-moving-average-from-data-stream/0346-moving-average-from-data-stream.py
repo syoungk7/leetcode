@@ -6,9 +6,9 @@ class MovingAverage:
 
     def next(self, val: int) -> float:
         self.int_lst.append(val)
-
-        if len(self.int_lst) <= self.size:
-            return sum(self.int_lst) / len(self.int_lst)
+        len_lst = len(self.int_lst)
+        if len_lst <= self.size:
+            return sum(self.int_lst) / len_lst
         else:
             self.int_lst.pop(0)
             return sum(self.int_lst) / self.size
