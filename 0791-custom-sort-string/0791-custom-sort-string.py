@@ -3,10 +3,8 @@ class Solution:
         
         counting = {}
         for i in s:
-            if i not in counting:
-                counting[i] = 1
-            else:
-                counting[i] += 1
+            if i not in counting: counting[i] = 1
+            else: counting[i] += 1
         
         new = ''
         in_s = [i for i in order if i in s]
@@ -14,7 +12,6 @@ class Solution:
         for j in in_s:
             new += j * counting[j]
             s = s.replace(j, '')
-                
                 
         return new + s
 
