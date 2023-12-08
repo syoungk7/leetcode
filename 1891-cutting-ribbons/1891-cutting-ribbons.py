@@ -18,21 +18,21 @@ class Solution:
 #         return right
     
     
-        def f(n):
-            ans = 0
-            for ribbon in ribbons:
-                ans += ribbon//n
-            return ans
+        def count_ribbon(n):
+            num_of_ribbon = 0
+            for r in ribbons:
+                num_of_ribbon += r // n
+            return num_of_ribbon
 
-        l = 1
-        r = sum(ribbons)//k+1
+        left = 1
+        right = sum(ribbons) // k+1
 
-        while l < r:
-            mid = l + (r-l)//2
+        while left < right:
+            mid = left + (right - left) // 2
 
-            if f(mid) < k:
-                r = mid
+            if count_ribbon(mid) < k:
+                right = mid
             else:
-                l = mid+1
+                left = mid + 1
 
-        return l-1
+        return left - 1
