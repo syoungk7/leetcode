@@ -1,18 +1,18 @@
 class Solution:
     def maxLength(self, ribbons: List[int], k: int) -> int:
-        start = 1
-        end = max(ribbons)
+        left = 1
+        right = max(ribbons)
         
-        while(start <= end):
-            mid = start + (end - start) // 2
-            res = 0
+        while(left <= right):
+            mid = left + (right - left) // 2
+            num_of_ribbon = 0
 
             for i in ribbons:
-                res += i // mid
+                num_of_ribbon += i // mid
 
-            if res >= k:
-                start = mid+1
+            if num_of_ribbon >= k:
+                left = mid + 1
             else:
-                end = mid -1
+                right = mid - 1
 
-        return end
+        return right
