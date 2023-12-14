@@ -15,7 +15,7 @@ WITH ranking AS (
     SELECT student_id, course_id, grade,
         RANK() OVER (PARTITION BY student_id ORDER BY grade DESC, course_id) AS ranks
     FROM Enrollments
-    ORDER BY student_id, course_id)
+    ORDER BY student_id)
 
 SELECT student_id, course_id, grade
 FROM ranking
