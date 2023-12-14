@@ -28,11 +28,25 @@
 # LEFT JOIN Scores s ON p.player_id = s.player
 # WINDOW tmp AS (PARTITION BY p.group_id ORDER BY s.total_scores DESC, p.player_id ASC)
 
-select group_id, player_id from (
-	select p.group_id, ps.player_id, sum(ps.score) as score from Players p,
-	    (select first_player as player_id, first_score as score from Matches
-	    union all
-	    select second_player, second_score from Matches) ps
-	where p.player_id = ps.player_id
-	group by ps.player_id order by group_id, score desc, player_id) top_scores
-group by group_id
+# select group_id, player_id from (
+# 	select p.group_id, ps.player_id, sum(ps.score) as score from Players p,
+# 	    (select first_player as player_id, first_score as score from Matches
+# 	    union all
+# 	    select second_player, second_score from Matches) ps
+# 	where p.player_id = ps.player_id
+# 	group by ps.player_id order by group_id, score desc, player_id) top_scores
+# group by group_id
+
+
+WITH CTE AS
+(SELECT first_player player_id, first_score score
+FROM matches
+UNION ALL
+SELECT second_player player_id, second_score score
+FROM matches),
+CTE_1 AS (SELECT player_id, SUM(score) score
+FROM CTE
+GROUP BY player_id)
+
+SELECT DISTINCT group_id, FIRST_VALUE(c.player_id) OVER(partition by group_id ORDER BY score DESC, c.player_id) player_id
+from cte_1 c LEFT JOIN players p ON c.player_id = p.player_id
