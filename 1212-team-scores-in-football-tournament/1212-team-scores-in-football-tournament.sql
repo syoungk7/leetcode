@@ -12,7 +12,7 @@
 #     GROUP BY team
 #     )
 
-SELECT team_id, team_name, IFNULL(SUM(3*(host_goals>guest_goals) + (host_goals=guest_goals)), 0) AS num_points
+SELECT team_id, team_name, IFNULL(SUM(IF(host_goals > guest_goals, 3, IF(host_goals = guest_goals, 1, 0))), 0) AS num_points
 FROM Teams
 LEFT JOIN (SELECT * FROM Matches
      UNION ALL
