@@ -12,26 +12,26 @@
 #     GROUP BY team
 #     )
 
-# SELECT team_id, team_name, IFNULL(SUM(3*(host_goals>guest_goals) + (host_goals=guest_goals)), 0) AS num_points
-# FROM Teams
-# LEFT JOIN (SELECT * FROM Matches
-#      UNION ALL
-#      SELECT match_id, guest_team, host_team, guest_goals, host_goals 
-#      FROM Matches) t ON team_id = t.host_team
-# GROUP BY team_id
-# ORDER BY num_points DESC
-
-
-SELECT 
-    team_id, 
-    team_name, 
-    IFNULL(SUM(3*(host_goals>guest_goals) + (host_goals=guest_goals)), 0) AS num_points
-FROM 
-    Teams 
-LEFT JOIN 
-    (SELECT * FROM Matches
+SELECT team_id, team_name, IFNULL(SUM(3*(host_goals>guest_goals) + (host_goals=guest_goals)), 0) AS num_points
+FROM Teams
+LEFT JOIN (SELECT * FROM Matches
      UNION ALL
      SELECT match_id, guest_team, host_team, guest_goals, host_goals 
-     FROM Matches) a ON team_id = host_team 
+     FROM Matches) t ON team_id = t.host_team
 GROUP BY team_id
-ORDER BY num_points DESC, team_id ASC; 
+ORDER BY num_points DESC, team_id ASC
+
+
+# SELECT 
+#     team_id, 
+#     team_name, 
+#     IFNULL(SUM(3*(host_goals>guest_goals) + (host_goals=guest_goals)), 0) AS num_points
+# FROM 
+#     Teams 
+# LEFT JOIN 
+#     (SELECT * FROM Matches
+#      UNION ALL
+#      SELECT match_id, guest_team, host_team, guest_goals, host_goals 
+#      FROM Matches) a ON team_id = host_team 
+# GROUP BY team_id
+# ORDER BY num_points DESC, team_id ASC; 
