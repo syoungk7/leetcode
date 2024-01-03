@@ -11,6 +11,6 @@ WITH monthly_spending AS (SELECT customer_id,
 SELECT c.customer_id, name
 FROM monthly_spending t, Customers c
 WHERE c.customer_id = t.customer_id
-GROUP BY c.customer_id, name
+GROUP BY c.customer_id
 HAVING SUM(IF(spending >= 100, 1, 0)) = 2
     
