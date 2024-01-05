@@ -6,7 +6,7 @@ class Solution:
         
         if len(rev_stone) != 1:
             while len(rev_stone) != 1:
-                # diff = heapq.heappop(rev_stone) - heapq.heappop(rev_stone)
-                # heapq.heappush(rev_stone, diff)
-                heapq.heappush(rev_stone, heapq.heappop(rev_stone) - heapq.heappop(rev_stone))
+                diff = heapq.heappop(rev_stone) - heapq.heappop(rev_stone)
+                heapq.heappush(rev_stone, diff)
+                # heapq.heappush(rev_stone, heapq.heappop(rev_stone) - heapq.heappop(rev_stone))
         return -rev_stone[0]
