@@ -8,7 +8,7 @@
 SELECT name AS customer_name, c.customer_id, order_id, order_date
 FROM Customers c, (SELECT *, row_number() OVER (PARTITION BY customer_id ORDER BY order_date DESC) rnk
                   FROM Orders) o
-WHERE c.customer_id = o.customer_id AND rnk < 4
+WHERE c.customer_id = o.customer_id AND rnk <= 3
 ORDER BY customer_name, c.customer_id, order_date DESC
 
 
