@@ -25,22 +25,42 @@
 #         cte.category_id=c.parent)
 # SELECT * FROM cte ORDER BY depth;
 
-WITH RECURSIVE tmp AS
-    (SELECT employee_id, employee_name, manager_id, 0 AS depth 
-     FROM Employees 
-     WHERE manager_id = employee_id
-     UNION ALL
-     SELECT e.employee_id, e.employee_name, tmp.manager_id, tmp.depth+1 
-     FROM Employees e, tmp
-     WHERE tmp.employee_id = e.manager_id AND e.employee_id != e.manager_id)
+# WITH RECURSIVE tmp AS
+#     (SELECT employee_id, employee_name, manager_id, 0 AS depth 
+#      FROM Employees 
+#      WHERE manager_id = employee_id
+#      UNION ALL
+#      SELECT e.employee_id, e.employee_name, tmp.manager_id, tmp.depth+1 
+#      FROM Employees e, tmp
+#      WHERE tmp.employee_id = e.manager_id AND e.employee_id != e.manager_id)
 
-SELECT DISTINCT employee_id
-FROM tmp t, (SELECT manager_id, depth, 
-                sum(depth) over (PARTITION BY manager_id, depth) as cumulative_sum
-             FROM tmp) tt
-WHERE tt.depth >= 2 AND cumulative_sum >= 3 AND t.manager_id = tt.manager_id AND t.employee_id != tt.manager_id
+# SELECT DISTINCT employee_id
+# FROM tmp t, (SELECT manager_id, depth, 
+#                 sum(depth) over (PARTITION BY manager_id, depth) as cumulative_sum
+#              FROM tmp) tt
+# WHERE tt.depth >= 2 AND cumulative_sum >= 3 AND t.manager_id = tt.manager_id AND t.employee_id != tt.manager_id
 
-# SELECT e.employee_id, e.employee_name, e.manager_id, tmp.depth+1 
-# FROM Employees e, tmp
-# WHERE tmp.employee_id = e.manager_id AND e.employee_id != e.manager_id 
 
+
+WITH RECURSIVE cte (employee_id, depth) AS (
+	SELECT
+		Employees.employee_id,
+		1 AS depth
+	FROM Employees
+	WHERE (
+		Employees.employee_id <> 1
+		AND
+		Employees.manager_id = 1
+	)
+	UNION ALL
+	SELECT
+		SubEmployees.employee_id,
+		cte.depth + 1 AS depth
+	FROM cte
+	JOIN Employees AS SubEmployees
+	ON cte.employee_id = SubEmployees.manager_id
+)
+
+SELECT employee_id
+FROM cte
+WHERE depth <= 3; -- You can change here for the scalability.
