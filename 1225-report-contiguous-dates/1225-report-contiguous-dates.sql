@@ -15,7 +15,3 @@ FROM (SELECT *, ROW_NUMBER () OVER (ORDER BY test_date) AS total_rm
       ORDER BY test_date) t
 GROUP BY total_rm - test_rm, period_state
 ORDER BY test_date
-
-
-# DATEDIFF(fail_date, '2019-01-01')
-# DATEDIFF(success_date, '2019-01-01')
