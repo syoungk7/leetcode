@@ -1,6 +1,5 @@
 # Write your MySQL query statement below
-select author_id as id
-from Views
-where author_id = viewer_id
-group by author_id
-order by id
+SELECT DISTINCT author_id AS id
+FROM Views
+WHERE author_id=viewer_id AND author_id IN (SELECT DISTINCT viewer_id FROM Views)
+ORDER BY author_id
