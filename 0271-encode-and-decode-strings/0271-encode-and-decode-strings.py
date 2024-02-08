@@ -1,7 +1,5 @@
 class Codec:
     def encode(self, strs: List[str]) -> str:
-        """Encodes a list of strings to a single string.
-        """
         encode_lst = []
         k = 27
         for word in strs:
@@ -14,12 +12,8 @@ class Codec:
         return ''.join(encode_lst)
 
     def decode(self, s: str) -> List[str]:
-        """Decodes a single string to a list of strings.
-        """
-        print(s)
         decode_lst = []
         k = 27
-
 
         for word in s.split('|//|')[0:len(s.split('|//|'))-1]:
             tmp = []
