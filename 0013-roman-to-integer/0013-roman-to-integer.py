@@ -6,13 +6,9 @@ class Solution:
 
         for idx, sym in enumerate(s):
             if s[idx:idx+1] and s[idx:idx+2] in values2:
-                print(output)
                 output += values2[s[idx:idx+2]]
-                print(output, s[idx:idx+2])
                 output -= values[s[idx+1]]
-                print(output, s[idx+1])
             else:
                 output += values[sym]
-                print(output, idx, sym )
     
         return output
