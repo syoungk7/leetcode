@@ -3,8 +3,8 @@ BEGIN
 SET N = N-1;
   RETURN (
       SELECT DISTINCT salary 
-      FROM Employee 
+      FROM employee 
       ORDER BY salary DESC 
-      LIMIT 1 OFFSET N      
+      LIMIT N, 1    
   );
 END
