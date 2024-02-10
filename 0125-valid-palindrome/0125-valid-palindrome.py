@@ -11,7 +11,6 @@ class Solution:
         regex = re.compile('[^a-zA-Z0-9]')
 
         while left < right:
-            print(regex.sub('', s[left]))
             while left < right and not regex.sub('', s[left]): left += 1
             while left < right and not regex.sub('', s[right]): right -= 1
             if s[left].lower() != s[right].lower(): return False
