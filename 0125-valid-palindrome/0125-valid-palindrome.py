@@ -8,7 +8,7 @@ class Solution:
 
         ## two points
         left, right = 0, len(s)-1
-        # regex = re.compile('[^a-zA-Z0-9]')
+        regex = re.compile('[^a-zA-Z0-9]')
 
         while left < right:
             while left < right and not re.match('^[a-zA-Z0-9]', s[left]): left += 1
