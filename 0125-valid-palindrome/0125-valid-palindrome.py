@@ -11,8 +11,12 @@ class Solution:
         regex = re.compile('[^a-zA-Z0-9]')
 
         while left < right:
-            while left < right and not re.match('^[a-zA-Z0-9]', s[left]): left += 1
-            while left < right and not re.match('^[a-zA-Z0-9]', s[right]): right -= 1
+            while left < right and not regex.sub('', s[left]): left += 1
+            while left < right and not regex.sub('', s[right]): right -= 1
+                                
+#             while left < right and not re.match('^[a-zA-Z0-9]', s[left]): left += 1
+#             while left < right and not re.match('^[a-zA-Z0-9]', s[left]): right -= 1
+                
             if s[left].lower() != s[right].lower(): return False
 
             left += 1
