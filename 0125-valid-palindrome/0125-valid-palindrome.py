@@ -9,9 +9,7 @@ class Solution:
         ## two points
         left, right = 0, len(s)-1
         regex = re.compile('[^a-zA-Z0-9]')
-        # ss = regex.sub('', s.lower())
-        
-        
+
         while left < right:
             print(regex.sub('', s[left]))
             while left < right and not regex.sub('', s[left]): left += 1
