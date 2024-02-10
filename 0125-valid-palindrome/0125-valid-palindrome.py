@@ -8,10 +8,14 @@ class Solution:
 
         ## two points
         left, right = 0, len(s)-1
-
+        regex = re.compile('[^a-zA-Z0-9]')
+        # ss = regex.sub('', s.lower())
+        
+        
         while left < right:
-            while left < right and not s[left].isalnum(): left += 1
-            while left < right and not s[right].isalnum(): right -= 1
+            print(regex.sub('', s[left]))
+            while left < right and not regex.sub('', s[left]): left += 1
+            while left < right and not regex.sub('', s[right]): right -= 1
             if s[left].lower() != s[right].lower(): return False
 
             left += 1
