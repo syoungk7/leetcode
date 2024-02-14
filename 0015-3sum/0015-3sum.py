@@ -1,5 +1,18 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+    ## Time Limit Exceeded
+#         nums.sort()
+#         three = set()
+        
+#         for i in range(len(nums)-2):
+#             for j in range(i+1,len(nums)-1):
+#                 for k in range(j+1,len(nums)):
+#                     temp = nums[i] + nums[j] + nums[k]
+#                     if temp == 0:
+#                         three.add((nums[i],nums[j],nums[k]))
+#         return three
+
+
         if len(nums) == 3 and sum(nums) == 0: return [nums]
         
         tmp = sorted(nums)
