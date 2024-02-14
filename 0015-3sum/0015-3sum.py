@@ -12,7 +12,6 @@ class Solution:
 #                         three.add((nums[i],nums[j],nums[k]))
 #         return three
 
-
         if len(nums) == 3 and sum(nums) == 0: return [nums]
         
         tmp = sorted(nums)
