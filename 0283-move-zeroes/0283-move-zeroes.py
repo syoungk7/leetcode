@@ -17,12 +17,12 @@ class Solution:
 #             print(nums)
         
 #         return nums
-        slow = 0
-        for fast in range(len(nums)):
-            if nums[fast] != 0 and nums[slow] == 0:
-                nums[slow], nums[fast] = nums[fast], nums[slow]
+        left = 0
+        for right in range(len(nums)):
+            if nums[right] != 0 and nums[left] == 0:
+                nums[left], nums[right] = nums[right], nums[left]
 
             # wait while we find a non-zero element to
             # swap with you
-            if nums[slow] != 0:
-                slow += 1
+            if nums[left] != 0:
+                left += 1
