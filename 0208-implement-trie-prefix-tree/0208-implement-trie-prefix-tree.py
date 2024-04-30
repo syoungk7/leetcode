@@ -1,19 +1,33 @@
-
+#ys
 class Trie:
+
     def __init__(self):
-        self.dic = {}
+        self.trie = {}
 
     def insert(self, word: str) -> None:
-        self.dic[word] = True
+        t = self.trie
+
+        for c in word:
+            if c not in t:
+                t[c] = {}
+            t = t[c]
+        t['.'] = None
 
     def search(self, word: str) -> bool:
-        if word in self.dic:
-            return True
-        return False
+        t = self.trie
+
+        for c in word:
+            if c not in t:
+                return False
+            t = t[c]
+
+        return '.' in t
 
     def startsWith(self, prefix: str) -> bool:
-        l = len(prefix)
-        for k, v in self.dic.items():
-            if prefix == k[:l]:
-                return True
-        return False
+        t = self.trie
+
+        for c in prefix:
+            if c not in t:
+                return False
+            t = t[c]
+        return True
