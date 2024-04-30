@@ -1,24 +1,19 @@
-class Trie:
 
+class Trie:
     def __init__(self):
-        self.trie = set()
+        self.dic = {}
 
     def insert(self, word: str) -> None:
-        self.trie.add(word)
+        self.dic[word] = True
 
     def search(self, word: str) -> bool:
-        return word in self.trie
-
+        if word in self.dic:
+            return True
+        return False
 
     def startsWith(self, prefix: str) -> bool:
-        for i in self.trie:
-            if prefix == i[0:len(prefix)]:
+        l = len(prefix)
+        for k, v in self.dic.items():
+            if prefix == k[:l]:
                 return True
-        else:
-            return False
-
-# Your Trie object will be instantiated and called as such:
-# obj = Trie()
-# obj.insert(word)
-# param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix)
+        return False
