@@ -3,16 +3,17 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        # nums1 = [] if m == 0 and n == 0 else nums1
-        # nums1 = nums1 if m == 0 else nums1
-        # nums1 = nums2 if n == 0 else nums1
-
-        nums1[m::] = nums2
-        nums1 = nums1.sort()
+        i = j = 0
+        nums1_vals = nums1[:m]
         
-        # nums1[:] = nums1[0:m] + nums2
-        # nums1.sort()       
+        for k in range(m+n):
 
- 
-        
-            
+            if n <= j or (i < m and nums1_vals[i] <= nums2[j]):                 
+                nums1[k] = nums1_vals[i]
+                i += 1
+            else:
+                nums1[k] = nums2[j]
+                j += 1
+
+        # nums1[m::] = nums2
+        # nums1 = nums1.sort()
