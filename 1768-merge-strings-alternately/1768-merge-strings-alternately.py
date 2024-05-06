@@ -1,18 +1,16 @@
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
-        #lst2 = list(zip(word1, word2))
-        #comb_word = "".join([str("".join(i)) for i in lst2])
-        comb_word = ""
-        leng = min(len(word1), len(word2))
+        i = j = 0
+        merged_str = ''
         
-        for i in range(leng):
-            comb_word += word1[i]
-            comb_word += word2[i]
-        
-        if len(word1) != len(word2):
-            if len(word1) > len(word2):
-                comb_word += word1[leng::]
-            else:
-                comb_word += word2[leng::]
+        while i < len(word1) or j < len(word2):
 
-        return comb_word
+            if i < len(word1):
+                merged_str += word1[i]
+                i += 1
+        
+            if j < len(word2):
+                merged_str += word2[j]
+                j += 1
+     
+        return merged_str
