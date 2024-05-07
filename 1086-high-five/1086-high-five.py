@@ -1,13 +1,20 @@
 class Solution:
     def highFive(self, items: List[List[int]]) -> List[List[int]]:
-        new = defaultdict(list)
-        avg = []
-        for i, j in items:
-            new[i].append(j)
+        ids = {}
+        result = []
+        for item in items:
+            if item[0] not in ids:
+                ids[item[0]] = [item[1]]
+            else:
+                ids[item[0]].append(item[1])
+        
+        for s_id, score in ids.items():
+            heapq.heapify(score)
 
-        for k in sorted(new.keys()):
-            top5 = sorted(new[k], reverse = True)[0:5]
-            avg.append([k, int(sum(top5)/5)])
-
-        return avg
-                              
+            while len(score) > 5:
+                heapq.heappop(score)
+            
+            result.append([s_id, int(sum(score)/5)])
+        return sorted(result, key=lambda x: x[0])
+                
+            
