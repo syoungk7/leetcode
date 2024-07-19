@@ -1,8 +1,8 @@
 # Write your MySQL query statement below
-select s.user_id, round(ifnull(c.confirmed/(c.timeout+c.confirmed), 0), 2) as confirmation_rate
-from signups as s
-left join (select user_id, count(case when action = 'timeout' then 1 end) as timeout,
-        count(case when action = 'confirmed' then 1 end) as confirmed
-        from confirmations
-        group by user_id) as c
+select s.user_id,
+round(ifnull(sum(case when c.action = 'confirmed' then 1 else 0 end) /
+count(c.user_id), 0), 2) as confirmation_rate
+from signups s
+left join Confirmations c
 on s.user_id = c.user_id
+group by s.user_id
