@@ -1,10 +1,12 @@
-with query_stats as (
-    select query_name,
-    avg(rating * 1.0 / position) as quality,
-    sum(CASE when rating < 3 then 1 else 0 end) * 100.0 / count(*) AS poor_query_percentage
-    from queries
-    where query_name is not null
-    group by query_name)
+WITH T as (SELECT query_name,
+    AVG(rating/position) as q,
+    SUM(if(rating <3, 1,0)) as p,
+    count(*) as total
+FROM Queries
+WHERE query_name is NOT NULL
+GROUP BY query_name)
 
-select query_name, round(quality, 2) as quality, round(poor_query_percentage, 2) as poor_query_percentage
-from query_stats
+SELECT query_name,
+      ROUND(q,2) as quality,
+      ROUND((p/total *100),2) as poor_query_percentage
+FROM T;
