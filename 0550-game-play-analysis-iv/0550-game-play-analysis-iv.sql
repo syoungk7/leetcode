@@ -1,6 +1,9 @@
-# Write your MySQL query statement below
-SELECT ROUND(COUNT(a.player_id)/(SELECT COUNT(DISTINCT player_id) FROM Activity), 2) AS fraction
-FROM Activity a, (SELECT player_id, MIN(event_date) as min_date
-                  FROM Activity
-                  GROUP BY player_id) s
-WHERE a.player_id = s.player_id and DATEDIFF(a.event_date, s.min_date) = 1
+with first_login as (
+    select player_id, min(event_date) as first_login_date
+    from activity
+    group by player_id)
+
+select round(count(distinct f.player_id) * 1.0 / (select count(distinct player_id) from Activity), 2) as fraction
+from first_login f
+join activity a on f.player_id = a.player_id
+and a.event_date = date_add(f.first_login_date, interval 1 day)
