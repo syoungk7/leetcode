@@ -1,9 +1,5 @@
-WITH F AS (SELECT customer_id, order_date,
-    ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_date ASC) as firstorder
-    FROM Delivery)
-SELECT
-  ROUND(SUM(IF(D.order_date = D.customer_pref_delivery_date,1,0)) / COUNT(F.customer_id) *100,2) as immediate_percentage
-FROM F
-LEFT JOIN Delivery D
-ON F.customer_id = D.customer_id AND F.order_date = D.order_date
-WHERE F.firstorder = 1;
+select round(count(d1.customer_id) / (select count(distinct d3.customer_id) from Delivery d3) * 100, 2) as immediate_percentage
+from Delivery d1
+where d1.order_date =
+    (select min(d2.order_date) from Delivery d2 where d1.customer_id = d2.customer_id)
+    and d1.order_date = d1.customer_pref_delivery_date
