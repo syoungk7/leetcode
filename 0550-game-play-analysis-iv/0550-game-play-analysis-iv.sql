@@ -1,6 +1,6 @@
-with first as (select player_id, min(event_date) as event_date
-              from activity
-              group by player_id)
-select round(sum(datediff(a.event_date, f.event_date) = 1) / count(distinct a.player_id), 2) as fraction
-from activity a
-join first f on a.player_id = f.player_id
+SELECT ROUND(COUNT(a.player_id) / (SELECT COUNT(DISTINCT player_id) FROM Activity), 2) AS fraction
+FROM Activity a
+    LEFT JOIN (SELECT player_id, MIN(event_date) AS first_login
+    FROM Activity GROUP BY player_id) my
+    ON a.player_id = my.player_id
+WHERE event_date = first_login + INTERVAL 1 DAY
