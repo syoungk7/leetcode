@@ -1,10 +1,14 @@
 # Write your MySQL query statement below
 
-# select distinct num as ConsecutiveNums
-# from (select id-1, num,
-#         lag(num) over (order by id) as prev_num,
-#         lead (num) over (order by id) as next_num from logs) as sub
-# where num = prev_num and prev_num = next_num
+select distinct num as ConsecutiveNums
+from (select id, num,
+        lag(num) over (order by id) as prev_num,
+        lead (num) over (order by id) as next_num from logs) as sub
+where num = prev_num and prev_num = next_num and sub.id+1 in (Select id from Logs) and sub.id-1 in (Select id from Logs)
+
+# Select id, id+1
+# from Logs
+# Where id + 1 in (Select id from Logs)
 
 
 # select *,
@@ -13,19 +17,19 @@
 # from logs
 # where 
 
-with CTE as (
-    select
-        num,
-        id,
-        lead(num, 1)  over (order by id) num1,
-        lead(num, 2)  over (order by id) num2,
-        lead(id, 1) over (order by id) id1,
-        lead(id, 2) over (order by id) id2
-    from logs
-)
+# with CTE as (
+#     select
+#         num,
+#         id,
+#         lead(num, 1)  over (order by id) num1,
+#         lead(num, 2)  over (order by id) num2,
+#         lead(id, 1) over (order by id) id1,
+#         lead(id, 2) over (order by id) id2
+#     from logs
+# )
 
-select distinct num as "ConsecutiveNums" from cte
-where num = num1 and num = num2 and id = id1 - 1 and id = id2 -2;
+# select distinct num as "ConsecutiveNums" from cte
+# where num = num1 and num = num2 and id = id1 - 1 and id = id2 -2;
 
 
 # With test as (
